@@ -170,7 +170,7 @@ module WebsocketRails
       Fiber.new do
         id = connection.user_identifier
         user = connection.user
-        @active_users[id] = user
+        @active_users[id] = user.as_json(root: false).to_json
       end.resume
     end
 
